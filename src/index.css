@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .pepito {
+    @apply absolute top-[calc(var(--top)_*_100vh)] left-[calc(var(--left)_*_100vw)];
+    transform: perspective(500px)
+      translate3d(-50%, -50%, calc(var(--z, 0) * 100px))
+      rotate3d(1, 0, 0, var(--betaRotation))
+      rotate3d(0, 1, 0, var(--gammaRotation));
+  }
+}
