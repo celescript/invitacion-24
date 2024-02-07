@@ -3,11 +3,30 @@
 @tailwind utilities;
 
 @layer components {
-  .pepito {
-    @apply absolute top-[calc(var(--top)_*_100vh)] left-[calc(var(--left)_*_100vw)];
+  .image-container {
+    position: absolute;
+
+    top: 50vh;
+    left: 50vw;
+    overflow: visible;
+    width: 1px;
+    height: 1px;
     transform: perspective(500px)
-      translate3d(-50%, -50%, calc(var(--z, 0) * 100px))
-      rotate3d(1, 0, 0, var(--betaRotation))
-      rotate3d(0, 1, 0, var(--gammaRotation));
+      translate3d(
+        calc(10px * var(--gammaRotation) * var(--z)),
+        calc(-10px * var(--betaRotation) * var(--z)),
+        calc(var(--z, 0) * 100px)
+      )
+      rotate3d(1, 0, 0, calc(var(--betaRotation) * 1deg))
+      rotate3d(0, 1, 0, calc(var(--gammaRotation) * 1deg));
+  }
+
+  .image {
+    position: absolute;
+    top: calc((var(--top) - 0.5) * 100vh);
+    left: calc((var(--left) - 0.5) * 100vw);
+    transform: translate(-50%, -50%);
+    width: 300px;
+    max-width: initial !important;
   }
 }
